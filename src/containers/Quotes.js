@@ -8,7 +8,7 @@ class Quotes extends Component {
 renderCard = () =>{
   if(this.props.quote.length > 0){
 return this.props.quote.map(quote => {
-  return  <div key={quote.quoteId}><QuoteCard key={quote.quoteId} remove={removeQuote} upvote={()=>this.props.dispatch(upvoteQuote(quote.quoteId))} downvote={downvoteQuote} quote={quote}/></div>
+  return  <div key={quote.quoteId}><QuoteCard key={quote.quoteId} remove={()=>this.props.dispatch(removeQuote(quote.quoteId))} upvote={()=>this.props.dispatch(upvoteQuote(quote.quoteId))} downvote={()=>this.props.dispatch(downvoteQuote(quote.quoteId))} quote={quote}/></div>
 
 })
   }

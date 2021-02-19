@@ -5,6 +5,16 @@ import {removeQuote, upvoteQuote, downvoteQuote} from '../actions/quotes'
 
 class Quotes extends Component {
 
+renderCard = () =>{
+  if(this.props.quote.length > 0){
+return this.props.quote.map(quote => {
+  return  <div key={quote.quoteId}><QuoteCard key={quote.quoteId} remove={removeQuote} upvote={()=>this.props.dispatch(upvoteQuote(quote.quoteId))} downvote={downvoteQuote} quote={quote}/></div>
+
+})
+  }
+}
+
+
   render() {
     return (
       <div>
@@ -16,7 +26,7 @@ class Quotes extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-4">
-               <QuoteCard remove={removeQuote} upvote={upvoteQuote} downvote={downvoteQuote}/>
+              {this.renderCard()}
             </div>
           </div>
         </div>
@@ -27,6 +37,6 @@ class Quotes extends Component {
 
 //add arguments to connect as needed
 const mapStateToProps = (state) =>{
-  return {quote: state}
+  return {quote: state.quotes}
 }
 export default connect(mapStateToProps)(Quotes);

@@ -14,7 +14,6 @@ class QuoteForm extends Component {
 
   handleOnChange = event => {
     // Handle Updating Component State
-    // debugger
     this.setState({
       [event.target.name]: event.target.value
     })
@@ -25,9 +24,8 @@ class QuoteForm extends Component {
     // Handle Form Submit event default
     event.preventDefault()
     // Create quote object from state
-    let quote = {content: this.state.content, author: this.state.author, quoteId: uuid()}
+    let quote = {content: this.state.content, author: this.state.author, quoteId: uuid(), votes:0}
     // Pass quote object to action creator
-    debugger
     this.props.addQuote(quote)
     // Update component state to return to default state
     this.setState({
@@ -38,6 +36,7 @@ class QuoteForm extends Component {
 
   render() {
     return (
+      
       <div className="container">
         <div className="row">
           <div className="col-md-8 col-md-offset-2">

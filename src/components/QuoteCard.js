@@ -14,19 +14,22 @@ const QuoteCard = (props) =>
       <div className="float-right">
         <div className="btn-group btn-group-sm" role="group" aria-label="Basic example">
           <button
-            onClick={()=>this.upvote()}
+            onClick={()=>props.upvote()}
             type="button"
             className="btn btn-primary"
           >
             Upvote
           </button>
           <button
+            onClick={()=>props.downvote()}
+
             type="button"
             className="btn btn-secondary"
           >
             Downvote
           </button>
           <button
+            onClick={()=>props.remove()}
             type="button"
             className="btn btn-danger"
           >
